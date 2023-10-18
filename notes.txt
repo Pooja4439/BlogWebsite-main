@@ -1,0 +1,77 @@
+Django
+
+For practice project here 
+
+    Company ---> emplyoee
+
+        API will be made using Django REST API.
+
+HTTP methods:
+    - GET       to accquire
+    - PUT       to update
+    - POST      to create
+    - DELETE    to remove
+
+To make a fully working API in django:
+    - Install django and DRF.
+    - Setup django models.
+    - Setup serializer and de-serializer (object <---> JSON)
+    - Setup Views to accept request.
+    - Setup URLs to map URL with view.
+    - Test the API.
+
+---------------------------------------------------------------------------------------------------------------------   
+This code enables postgresql to connect with django
+
+    DATABASES = {
+            'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'practicedb',
+            'USER': 'admin',
+            'PASSWORD': 'root',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
+---------------------------------------------------------------------------------------------------------------------   
+This code provided by REST framework enables django to restrict CRUD operations by any user.
+
+    REST_FRAMEWORK = {
+        # Use Django's standard `django.contrib.auth` permissions,
+        # or allow read-only access for unauthenticated users.
+        'DEFAULT_PERMISSION_CLASSES': [
+            'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        ],
+        # This return the result of API call in JSON format
+        'DEFAULT_RENDERER_CLASSES':(
+            'rest_framework.renderers.JSONRenderer',
+        )
+    }
+---------------------------------------------------------------------------------------------------------------------   
+This code enables rest framework in django and also to enable a new app to work with django it need to be 
+present in the list.
+
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        # so that rest gets intergrated with rest framework
+        'rest_framework',
+        # API name registered
+        'api'
+    ]
+---------------------------------------------------------------------------------------------------------------------
+
+Some important commands:
+    - django-admin startproject <project_name>
+    - python manage.py startapp <app_name>
+    - python manage.py runserver
+    - python manage.py makemigrations and after that run python manage.py migrate
+---------------------------------------------------------------------------------------------------------------------
+
+TODO:
+	- JWT verfication
+	- JWT decode
